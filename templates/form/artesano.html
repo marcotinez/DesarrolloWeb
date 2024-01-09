@@ -1,0 +1,51 @@
+{% extends 'form/base.html' %}
+{% block title %} Información Artesano {% endblock %}
+{% block css %}
+<link 
+    rel="stylesheet" 
+    type="text/css"
+    href="{{ url_for('static', filename='css/lista_personal.css') }}">
+{% endblock %}
+{% block content %}
+<div class="container">
+    <table class="centered-table">
+        <tr>
+            <th>Nombre</th>
+            <th>Región</th>
+            <th>Comuna</th>
+            <th>Tipo de Artesanías</th>
+            <th>Descripción Artesanías</th>
+            <th>Email Contacto</th>  
+            <th>Teléfono</th>
+            <th>Fotos</th>
+        </tr>
+        {% if artesano %}
+            <tr>
+                <td><a href="{{ url_for('index') }}">{{artesano.nombre}}</a></td>
+                <td><a href="{{ url_for('index') }}">{{artesano.region}}</a></td>
+                <td><a href="{{ url_for('index') }}">{{artesano.comuna}}</a></td>
+                <td><a href="{{ url_for('index') }}">{{artesano.tipos}}</a></td>
+                <td><a href="{{ url_for('index') }}">{{artesano.descripcion}}</a></td>
+                <td><a href="{{ url_for('index') }}">{{artesano.email}}</a></td>
+                <td><a href="{{ url_for('index') }}">{{artesano.telefono}}</a></td>
+                <td>
+                    <div class="image-container">
+                        {% for foto in artesano.fotos %}
+                            <img src="{{ url_for('static', filename=foto)}}" alt="placeholder" class="img-tb">
+                        {% endfor %}
+                    </div>
+                </td>
+            </tr>
+        {% endif %}
+    </table>
+</div>
+
+<div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img src= "placeholder.jpg" class="modal-content" alt="" id="img01">
+    <div id="espacio">.</div>
+</div>
+{% endblock %}
+{% block javascript %}
+<script src="{{ url_for('static', filename='js/abrir_fotos.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,42 @@
+  body {
+    background-color: #ffffff;
+    margin: 0; /* Añadimos margen 0 al cuerpo para evitar espacios innecesarios */
+    overflow-y: scroll;
+  }
+  
+  h1 {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    padding: 20px;
+    font-size: 30px;
+    font-family: 'Nunito', sans-serif;
+    color: aliceblue;
+  }
+  
+  header {
+    background-color: #358ab7;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 85px;
+    padding: 5px 10%;
+  }
+  
+  ul {
+    list-style: none;
+  }
+  
+  li {
+    display: inline-block;
+    margin: 0 10px;
+  }
+  
+  a {
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+    text-decoration: none;
+    color: aliceblue;
+    font-size: 20px;
+  }

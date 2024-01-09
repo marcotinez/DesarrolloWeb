@@ -1,0 +1,42 @@
+{% extends 'form/base.html' %}
+{% block title %} Información Hincha {% endblock %}
+{% block css %}
+<link 
+    rel="stylesheet" 
+    type="text/css"
+    href="{{ url_for('static', filename='css/lista_personal.css') }}">
+{% endblock %}
+{% block content %}
+<div class="container">
+    <table class="centered-table">
+        <tr>
+            <th>Nombre</th>
+            <th>Región</th>
+            <th>Comuna</th>
+            <th>Deportes</th>
+            <th>Email Contacto</th>  
+            <th>Teléfono</th>
+            <th>Comentarios</th>
+        </tr>
+        {% if hincha %}
+            <tr>
+                <td><a href="{{ url_for('index') }}">{{hincha.nombre}}</a></td>
+                <td><a href="{{ url_for('index') }}">{{hincha.region}}</a></td>
+                <td><a href="{{ url_for('index') }}">{{hincha.comuna}}</a></td>
+                <td><a href="{{ url_for('index') }}">{{hincha.deportes}}</a></td>
+                <td><a href="{{ url_for('index') }}">{{hincha.comentario}}</a></td>
+                <td><a href="{{ url_for('index') }}">{{hincha.email}}</a></td>
+                <td><a href="{{ url_for('index') }}">{{hincha.telefono}}</a></td>
+            </tr>
+        {% endif %}
+    </table>
+</div>
+
+<div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img src= "placeholder.jpg" class="modal-content" alt="" id="img01">
+    <div id="espacio">.</div>
+</div>
+{% endblock %}
+{% block javascript %}
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'form/base.html' %}
+{% block title %} Información Artesano {% endblock %}
+{% block css %}
+<link 
+    rel="stylesheet" 
+    type="text/css"
+    href="{{ url_for('static', filename='css/lista.css') }}">
+{% endblock %}
+{% block content %}
+<div class="container">
+    <table class="centered-table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Teléfono</th>
+                <th>Comuna</th>
+                <th>Tipo de Artesanías</th>
+                <th>Fotos</th>
+            </tr>
+        </thead>
+        {% if data_artesanos %}
+            {% for artesano in data_artesanos %}
+            <tbody>
+                <tr>
+                    <td><a href="{{ url_for('artesano_unico', id=artesano.id) }}">{{artesano.nombre}}</a></td>
+                    <td><a href="{{ url_for('artesano_unico', id=artesano.id) }}">{{artesano.telefono}}</a></td>
+                    <td><a href="{{ url_for('artesano_unico', id=artesano.id) }}">{{artesano.comuna}}</a></td>
+                    <td><a href="{{ url_for('artesano_unico', id=artesano.id) }}">{{artesano.tipos}}</a></td>
+                    <td>
+                        <div class="img-container">
+                            {% for foto in artesano.fotos %}
+                                <img src="{{ url_for('static', filename=foto)}}" alt="placeholder" class="img-tb">
+                            {% endfor %}
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        {% endif %}
+    </table>
+
+    {% if data_artesanos %}
+        <div class="pagination">
+            [Página {{ pagina }} de {{ total_paginas }}]
+            {% if pagina > 1 %}
+                <br>
+                <a id="anterior" href="{{ url_for('ver_artesanos', pagina=pagina-1) }}">Anterior</a>
+            {% endif %}
+            
+            {% set total_paginas = total_paginas %}
+            
+            {% if pagina < total_paginas %}
+                <br>
+                <a id="siguiente" href="{{ url_for('ver_artesanos', pagina=pagina+1) }}">Siguiente</a>
+            {% endif %}
+        </div>
+    {% endif %}
+
+</div>
+{% endblock %}
+{% block javascript %}
+{% endblock %}

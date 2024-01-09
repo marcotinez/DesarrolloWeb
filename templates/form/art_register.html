@@ -1,0 +1,116 @@
+{% extends 'form/base.html' %}
+{% block title %} Registrar Artesano {% endblock %}
+{% block css %}
+<link 
+    rel="stylesheet" 
+    type="text/css"
+    href="{{ url_for('static', filename='css/registrar.css') }}">
+{% endblock %}
+{% block content %}
+{% if error %}
+<div class="error">
+    <p>Error: {{ error }}</p>
+    <p>Por favor, intente nuevamente</p>
+</div>
+{% endif %}
+<div class="container">
+    <form class="formulario" id="artesano-form" action="art-register" method="post" enctype="multipart/form-data">
+        
+        <div id="nombre-artesano" class="artesano-input">
+            <label for="username">Nombre artesano(a)*:</label>
+            <input id="username" name="username" type="text" minlength="3" maxlength="80" required>
+        </div>
+        
+        <div id="region-artesano" class="artesano-input">
+            <label for="regiones">Región*:</label>
+            <select id="regiones" name="regiones" required>
+                <option value="" disabled selected>Seleccione una región</option>
+                    <option value="Región Arica y Parinacota">Región de Arica y Parinacota</option>
+                    <option value="Región de Tarapacá">Región de Tarapacá</option>
+                    <option value="Región de Antofagasta">Región de Antofagasta</option>
+                    <option value="Región de Atacama">Región de Atacama</option>
+                    <option value="Región de Coquimbo">Región de Coquimbo</option>
+                    <option value="Región de Valparaíso">Región de Valparaíso</option>
+                    <option value="Región Metropolitana de Santiago">Región Metropolitana de Santiago</option>
+                    <option value="Región del Libertador Bernardo Ohiggins">Región del Lib. General Bernardo O'Higgins</option>
+                    <option value="Región del Maule">Región del Maule</option>
+                    <option value="Región de Ñuble">Región de Ñuble</option>
+                    <option value="Región del Biobío">Región del Biobío</option>
+                    <option value="Región de la Araucanía">Región de la Araucanía</option>
+                    <option value="Región de Los Ríos">Región de Los Ríos</option>
+                    <option value="Región de Los Lagos">Región de Los Lagos</option>
+                    <option value="Región Aisén del General Carlos Ibáñez del Campo">Región de Aysén del Gral. Carlos Ibáñez del Campo</option>
+                    <option value="Región de Magallanes y la Antártica Chilena">Región de Magallanes y de la Antártica Chilena</option>
+            </select>
+        </div>
+        
+        <!--Hacer que dependan de la región seleccionada-->
+        <div id="comuna-artesano" class="artesano-input">
+            <label for="comunas">Comuna*:</label>
+            <select id="comunas" name="comunas"></select>
+        </div>
+
+        <!--Hacerlas de opcion multiple (entre 1 y 3)-->
+        <div id="tipo-artesano" class="artesano-input">
+            <label for="tipo">Tipo de artesania*:</label>
+            <select id="tipo" name="tipo" multiple required>
+                <option value="marmol">Mármol</option>
+                <option value="madera">Madera</option>
+                <option value="ceramica">Cerámica</option>
+                <option value="mimbre">Mimbre</option>
+                <option value="metal">Metal</option>
+                <option value="cuero">Cuero</option>
+                <option value="telas">Tela</option>
+                <option value="joyas">Joyas</option>
+                <option value="otros">Otros</option>
+            </select>
+        </div>
+        
+        <div id="fotos-artesanos" class="artesano-input">
+            <label for="fotos">Fotos de artesanías*:</label>
+            <input id= "fotos" name="foto" type="file" accept="image/*" multiple required>
+            <p>* Para seleccionar varias fotos utilice CTRL o Cmd.</p>
+        </div>
+
+        <div id="descripcion-artesano" class="artesano-input">
+            <label for="descripcion">Descripción artesanías:</label>
+            <textarea id="descripcion" name="descripcion" rows="4" cols="50" placeholder="ingrese un mínimo 3 letras"></textarea>
+        </div>
+        
+        <div id="email-artesano" class="artesano-input">
+            <label for="email">Email contacto artesano(a)*:</label>
+            <input id="email" name="email" type="email" required>    
+        </div>
+
+        <div id="number-artesano" class="artesano-input">
+            <label for="number">Número celular contacto:</label>
+            <input id="number" name="number" type="text" placeholder="Recuerda utilizar +56">
+        </div>
+        
+        <p id="casillas_obligatorias">*casillas obligatorias.</p>
+        
+        <div class="botones">
+            <button type="button" id="registro-artesano">
+                Registrar Artesano
+            </button>
+        </div>
+
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <p id="modal-text">¿Confirma el registro de este Artesano?</p>
+                <button type="submit" id="confirmar-artesano">Si, confirmo</button>
+                <button type="button" id="cancelar-artesano">No, quiero volver al formulario</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+{% endblock %}
+{% block javascript %}
+<script
+    src="{{ url_for('static', filename='js/validar_artesanos.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/js/multi-select-tag.js"></script>
+<script>
+    new MultiSelectTag('tipo')  // id
+</script>
+{% endblock %}

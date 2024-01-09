@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="icon" href="static/uploads/bandera.svg" type="image/x-icon">
+    {% block css %}{% endblock %}
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/css/multi-select-tag.css">
+    
+  </head>
+  <body>
+    <header>
+        <h1>Juegos Panamericanos</h1>
+        <nav>
+            <ul id="links-nav">
+                <li><a class="navbar-page" href="{{ url_for('index') }}">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    {% block content %}{% endblock %} {% block javascript %}{% endblock %}
+    
+  </body>
+</html>

@@ -1,0 +1,16 @@
+
+#container_hinchas {
+  padding-top: 50px;
+  min-width: 310px;
+  height: 400px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#container_artesanos {
+  padding-top: 20px;
+  min-width: 310px;
+  height: 400px;
+  max-width: 600px;
+  margin: 0 auto;
+}
